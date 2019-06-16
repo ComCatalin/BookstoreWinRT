@@ -3,8 +3,10 @@ import "BookSku.idl";
 
 namespace Bookstore
 {
-	runtimeclass BookstoreViewModel
+	runtimeclass BookstoreViewModel : Windows.UI.Xaml.Data.INotifyPropertyChanged
 	{
-		BookSku BookSku{ get; };
+		String Title;
+		BookSku BookSku;
+		Windows.Foundation.Collections.IObservableVector<IInspectable> BookSkus{ get; };
 	}
 }

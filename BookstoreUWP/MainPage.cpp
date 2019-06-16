@@ -15,7 +15,8 @@ namespace winrt::Bookstore::implementation
 
 	void MainPage::ClickHandler(Windows::Foundation::IInspectable const& /* sender */, Windows::UI::Xaml::RoutedEventArgs const& /* args */)
 	{
-		MainViewModel().BookSku().Title(L"To Kill a Mockingbird");
+		//MainViewModel().BookSku().Title(L"To Kill a Mockingbird");
+		MainViewModel().BookSkus().Append(winrt::make<Bookstore::implementation::BookSku>(MainViewModel().Title()));
 	}
 
 	Bookstore::BookstoreViewModel MainPage::MainViewModel()

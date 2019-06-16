@@ -6,8 +6,23 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+    
+        <StackPanel Orientation="Horizontal" Margin="10, 20, 0, 0">
+            <TextBox Text="{x:Bind MainViewModel.Title, Mode=TwoWay}" Width="300" Margin="0, 0, 5, 0"/>
+            <Button Click="ClickHandler" Content="Add book" />
+        </StackPanel>
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button Click="ClickHandler" Content="{x:Bind MainViewModel.BookSku.Title, Mode=OneWay}"/>
-    </StackPanel>
+        <ListBox Grid.Row="1" ItemsSource="{x:Bind MainViewModel.BookSkus}" Margin="10" SelectedItem="{x:Bind MainViewModel.BookSku, Mode=TwoWay}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="local:BookSku">
+                    <TextBlock Text="{x:Bind Title, Mode=OneWay}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ListBox>
+    </Grid>
 </Page>
